@@ -18,18 +18,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-var databaseUrl = builder.Configuration["DATABASE_URL"];
-
-var uri = new Uri(databaseUrl);
-var host = uri.Host; // Extract host
-var port = uri.Port; // Extract port
-var database = uri.AbsolutePath.TrimStart('/'); // Extract database name
-var userInfo = uri.UserInfo.Split(':'); // Extract username and password
-var username = userInfo[0];
-var password = userInfo[1];
-
-var connectionStringUrl = $"Host={host};Port={port};Database={database};Username={username};Password={password};SSL Mode=Require;Trust Server Certificate=true;";
-
 var postgresHost = builder.Configuration["POSTGRES_HOST"];
 var postgresPort = builder.Configuration["POSTGRES_PORT"];
 var postgresDb = builder.Configuration["POSTGRES_DB"];
@@ -37,12 +25,12 @@ var postgresUser = builder.Configuration["POSTGRES_USER"];
 var postgresPassword = builder.Configuration["POSTGRES_PASSWORD"];
 
 // Connection string
-var connectionString = connectionStringUrl ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
-// connectionString = connectionString.Replace("{POSTGRES_HOST}", postgresHost)
-//     .Replace("{POSTGRES_PORT}", postgresPort)
-//     .Replace("{POSTGRES_DB}", postgresDb)
-//     .Replace("{POSTGRES_USER}", postgresUser)
-//     .Replace("{POSTGRES_PASSWORD}", postgresPassword);
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+connectionString = connectionString.Replace("{POSTGRES_HOST}", postgresHost)
+    .Replace("{POSTGRES_PORT}", postgresPort)
+    .Replace("{POSTGRES_DB}", postgresDb)
+    .Replace("{POSTGRES_USER}", postgresUser)
+    .Replace("{POSTGRES_PASSWORD}", postgresPassword);
 
 // Use postgreSQL
 builder.Services.AddDbContext<ApplicationDbContext>(options =>

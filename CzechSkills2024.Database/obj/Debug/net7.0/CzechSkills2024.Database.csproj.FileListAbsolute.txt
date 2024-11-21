@@ -37,3 +37,4 @@
 /Users/oskarpetr/Developer/React/CzechSkills2024/CzechSkills2024.Database/obj/Debug/net7.0/CzechSkills2024.Database.pdb
 /Users/oskarpetr/Developer/React/CzechSkills2024/CzechSkills2024.Database/obj/Debug/net7.0/CzechSkills2024.Database.genruntimeconfig.cache
 /Users/oskarpetr/Developer/React/CzechSkills2024/CzechSkills2024.Database/obj/Debug/net7.0/ref/CzechSkills2024.Database.dll
+/Users/oskarpetr/Developer/React/CzechSkills2024/CzechSkills2024.Database/obj/Debug/net7.0/CzechSkills2024.Database.sourcelink.json
