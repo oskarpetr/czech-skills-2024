@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CzechSkills2024.Api", "CzechSkills2024.Api\CzechSkills2024.Api.csproj", "{A55D5B4A-9215-470D-A1E8-6B86A0E06909}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CzechSkills2024.Database", "CzechSkills2024.Database\CzechSkills2024.Database.csproj", "{0970D6B4-00F0-490A-B2F5-D3F45A60CB93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Deploy", "Deploy", "{9D41BDD2-20CB-4FDC-BCB6-1D2FB0E934A4}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		.env = .env
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A55D5B4A-9215-470D-A1E8-6B86A0E06909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A55D5B4A-9215-470D-A1E8-6B86A0E06909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A55D5B4A-9215-470D-A1E8-6B86A0E06909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A55D5B4A-9215-470D-A1E8-6B86A0E06909}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0970D6B4-00F0-490A-B2F5-D3F45A60CB93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0970D6B4-00F0-490A-B2F5-D3F45A60CB93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0970D6B4-00F0-490A-B2F5-D3F45A60CB93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0970D6B4-00F0-490A-B2F5-D3F45A60CB93}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

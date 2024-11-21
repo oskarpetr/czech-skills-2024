@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/CzechSkills2024.Database.props" />
+</Project>
