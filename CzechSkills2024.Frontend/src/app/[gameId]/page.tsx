@@ -4,6 +4,7 @@ import FadeIn from "@/components/animation/FadeIn";
 import Layout from "@/components/layout/Layout";
 import { games } from "@/utils/sampleData";
 import Error from "next/error";
+import Head from "next/head";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
@@ -18,6 +19,13 @@ export default function Game() {
 
   return (
     <Layout>
+      <Head>
+        <title>{game.name}</title>
+        <meta property="og:title" content="Annapurna Interactive" />
+        <meta property="og:description" content={game.description} />
+        <meta property="og:image" content={game.imageUrl} />
+      </Head>
+
       <div className="relative h-[calc(100vh-6rem)] w-screen">
         <Image
           alt={game.name}
@@ -35,15 +43,17 @@ export default function Game() {
             {game.description}
           </FadeIn>
 
-          {game.tags.map((tag, index) => (
-            <FadeIn
-              key={tag.name}
-              className="px-6 py-2 text-white"
-              delay={0.05 * index + 0.1}
-            >
-              {tag.name}
-            </FadeIn>
-          ))}
+          <div className="flex gap-2">
+            {game.tags.map((tag, index) => (
+              <FadeIn
+                key={tag.name}
+                className="px-6 py-2 text-white border border-white rounded-full"
+                delay={0.05 * index + 0.1}
+              >
+                {tag.name}
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </div>
     </Layout>
