@@ -19,14 +19,22 @@ export const authOptions: NextAuthOptions = {
           if (!credentials || !credentials.username || !credentials.password)
             return null;
 
-          const passwordHash = await bcrypt.hash(credentials.password, 10);
-
           const res = await postLogin({
             username: credentials.username,
-            password: passwordHash,
           });
+          console.log(credentials);
 
           const user = res.data;
+
+          console.log(user);
+          const passwordsMatch = await bcrypt.compare(
+            credentials.password,
+            user.password
+          );
+
+          if (!passwordsMatch) {
+            return null;
+          }
 
           return {
             id: user.userId,
