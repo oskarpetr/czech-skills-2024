@@ -31,4 +31,18 @@ public class UsersController : Controller
 
         return Ok(users);
     }
+
+    [HttpGet("post-user")]
+    public IActionResult PostUser()
+    {
+        _database.Users.Add(new()
+        {
+            Username = Guid.NewGuid().ToString(),
+            Password = Guid.NewGuid().ToString()
+        });
+
+        _database.SaveChanges();
+
+        return Ok();
+    }
 }

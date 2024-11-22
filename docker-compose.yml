@@ -25,16 +25,16 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
 
-  frontend:
-    depends_on: 
-      - api
-      - database
-    restart: always
-    build:
-      context: ./
-      dockerfile: ./CzechSkills2024.Frontend/Dockerfile
-    ports:
-      - "3000:3000"
+#  frontend:
+#    depends_on: 
+#      - api
+#      - database
+#    restart: always
+#    build:
+#      context: ./
+#      dockerfile: ./CzechSkills2024.Frontend/Dockerfile
+#    ports:
+#      - "3000:3000"
 #    environment:
 #      - NODE_ENV=production
 
