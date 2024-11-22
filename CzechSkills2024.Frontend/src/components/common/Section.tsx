@@ -1,5 +1,4 @@
 import { cn } from "@/utils/cn";
-import { CaretRight } from "@phosphor-icons/react";
 
 interface Props {
   title: string;

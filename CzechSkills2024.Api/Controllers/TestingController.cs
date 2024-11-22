@@ -39,8 +39,8 @@ public class TestingController : Controller
             return NotFound();
 
         // adapt to user dto
-        var userDto = user.Adapt<UserDto>();
-        var response = new ApiResponse(userDto);
+        var testing = new { testing = user.UserTesting.Testing };
+        var response = new ApiResponse(testing);
         
         return Ok(response);
     }
@@ -65,7 +65,7 @@ public class TestingController : Controller
             return NotFound();
         
         // check if testing exists
-        var testing = _database.Testings.FirstOrDefault(x => x.TestingId == testingBody.TestingId);
+        var testing = _database.Testings.FirstOrDefault(x => x.TestingId == testingBody.testingId);
         
         if (testing == null)
             return NotFound();
@@ -101,7 +101,7 @@ public class TestingController : Controller
     /// <remarks>
     /// This endpoint retrieves testings.
     /// </remarks>
-    /// <response code="201">This endpoint retrieves testings.</response>
+    /// <response code="200">This endpoint retrieves testings.</response>
     [ProducesResponseType(typeof(List<Testing>), 201)]
     [HttpGet(ApiEndpoints.Testing.GET_TESTING)]
     public IActionResult GetTesting()

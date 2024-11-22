@@ -12,6 +12,20 @@ export async function getTesting(userId: string) {
   return fetcher({ url: `testing/${userId}` });
 }
 
+// get testings
+export async function getTestings() {
+  return fetcher({ url: "testing" });
+}
+
+// post testing
+export async function postTesting(userId: string, testingId: string) {
+  return fetcher({
+    url: `testing/${userId}`,
+    method: "POST",
+    body: { TestingId: testingId },
+  });
+}
+
 // fetcher
 const API_URL = "https://cs24-api.onrender.com/api/v1/";
 

@@ -2,5 +2,5 @@ namespace Speckles.Api.BodyModels;
 
 public class TestingBody
 {
-    public string TestingId { get; set; }
+    public string testingId { get; set; }
 }

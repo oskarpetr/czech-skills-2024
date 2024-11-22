@@ -29,8 +29,8 @@ export default function UserPanel() {
 
         <FadeIn delay={0.2}>
           <Section title="Beta testing" color="white" />
+          <BetaTesting />
         </FadeIn>
-        <BetaTesting />
 
         <FadeIn delay={0.3}>
           <Button
