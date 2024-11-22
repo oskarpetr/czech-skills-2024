@@ -18,11 +18,11 @@ function MenuItems() {
   const menuItems: IMenuItem[] = [
     {
       text: "Games",
-      link: "#games",
+      link: "/#games",
     },
     {
       text: "About",
-      link: "#about",
+      link: "/#about",
     },
   ];
 

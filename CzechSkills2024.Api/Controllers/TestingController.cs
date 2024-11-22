@@ -2,6 +2,7 @@ using CzechSkills2024.Database;
 using CzechSkills2024.Database.Tables;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Speckles.Api.BodyModels;
 using Speckles.Api.Dto;
 using Speckles.Api.Lib;
@@ -33,7 +34,7 @@ public class TestingController : Controller
     public IActionResult GetTestingByUser([FromRoute] string userId)
     {
         // check if user exists
-        var user = _database.Users.FirstOrDefault(x => x.UserId == userId);
+        var user = _database.Users.Include(x => x.UserTesting).FirstOrDefault(x => x.UserId == userId);
         
         if (user == null)
             return NotFound();
