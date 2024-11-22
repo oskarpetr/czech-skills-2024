@@ -27,10 +27,7 @@ export default function UserPanel() {
           subtitle="You have successfully logged in."
         />
 
-        <FadeIn delay={0.2}>
-          <Section title="Beta testing" color="white" />
-          <BetaTesting />
-        </FadeIn>
+        <BetaTesting />
 
         <FadeIn delay={0.3}>
           <Button
