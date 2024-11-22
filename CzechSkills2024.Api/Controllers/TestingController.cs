@@ -46,14 +46,14 @@ public class TestingController : Controller
     }
     
     /// <summary>
-    /// Retrieves user testing.
+    /// Posts user testing.
     /// </summary>
     /// <remarks>
-    /// This endpoint retrieves testing by user id.
+    /// This endpoint posts testing by user id.
     /// </remarks>
-    /// <response code="201">This endpoint retrieves testing by user id.</response>
+    /// <response code="204">This endpoint posts testing by user id.</response>
     /// <response code="401">User's id was not found.</response>
-    [ProducesResponseType(typeof(UserDto), 201)]
+    [ProducesResponseType(typeof(UserDto), 204)]
     [ProducesResponseType(404)]
     [HttpPost(ApiEndpoints.Testing.UPDATE_TESTING)]
     public IActionResult UpdateTestingByUser([FromRoute] string userId, [FromBody] TestingBody testingBody)
@@ -93,5 +93,22 @@ public class TestingController : Controller
         _database.SaveChanges();
         
         return NoContent();
+    }
+    
+    /// <summary>
+    /// Retrieves testings.
+    /// </summary>
+    /// <remarks>
+    /// This endpoint retrieves testings.
+    /// </remarks>
+    /// <response code="201">This endpoint retrieves testings.</response>
+    [ProducesResponseType(typeof(List<Testing>), 201)]
+    [HttpGet(ApiEndpoints.Testing.GET_TESTING)]
+    public IActionResult GetTesting()
+    {
+        var testings = _database.Testings.ToList();
+        var response = new ApiResponse(testings);
+
+        return Ok(response);
     }
 }

@@ -2,7 +2,7 @@
 
 import FadeIn from "@/components/animation/FadeIn";
 import Layout from "@/components/layout/Layout";
-import { games } from "@/utils/sampleData";
+import { games } from "@/data/games";
 import { intervalToDuration } from "date-fns";
 import Error from "next/error";
 import Head from "next/head";
@@ -12,12 +12,15 @@ import { useParams } from "next/navigation";
 export default function Game() {
   const { gameId } = useParams();
 
+  // find game by id
   const game = games.find((x) => x.id === gameId);
 
+  // if null return error
   if (game == null) {
     return <Error statusCode={404} />;
   }
 
+  // time until release date
   const untilReleaseDate = intervalToDuration({
     start: new Date(),
     end: game.publishDate,

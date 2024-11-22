@@ -7,6 +7,11 @@ export async function postLogin(loginBody: IAuthLogin) {
   return fetcher({ url: "auth/login", method: "POST", body: loginBody });
 }
 
+// get testing
+export async function getTesting(userId: string) {
+  return fetcher({ url: `testing/${userId}` });
+}
+
 // fetcher
 const API_URL = "https://cs24-api.onrender.com/api/v1/";
 

@@ -4,8 +4,8 @@ import { cn } from "@/utils/cn";
 import Image from "next/image";
 import { useState } from "react";
 import FadeIn from "../animation/FadeIn";
-import { games } from "@/utils/sampleData";
 import Link from "next/link";
+import { games } from "@/data/games";
 
 export default function Games() {
   const [activeGameId, setActiveGameId] = useState(games[0].id);

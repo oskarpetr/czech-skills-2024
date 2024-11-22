@@ -7,6 +7,8 @@ public static class ApiEndpoints
     
     public static class Testing
     {
+        public const string GET_TESTING = "testing";
+        
         public const string TESTING_BY_USER = "testing/{userId}";
         public const string UPDATE_TESTING = "testing/{userId}";
     }

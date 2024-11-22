@@ -34,7 +34,6 @@ export default function LoginForm() {
 
   // on submit handler
   const onSubmit = async (values: any) => {
-    console.log(values);
     if (!values.username || !values.password) {
       return;
     }

@@ -1,7 +1,7 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
-import { Account, NextAuthOptions } from "next-auth";
+import { NextAuthOptions } from "next-auth";
 import axios from "axios";
 import { postLogin } from "./fetchers";
 import { SessionUser } from "@/types/NextAuth.types";
@@ -22,7 +22,6 @@ export const authOptions: NextAuthOptions = {
           const res = await postLogin({
             username: credentials.username,
           });
-          console.log(credentials);
 
           const user = res.data;
 
@@ -38,7 +37,8 @@ export const authOptions: NextAuthOptions = {
 
           return {
             id: user.userId,
-            name: user.username,
+            userId: user.userId,
+            username: user.username,
           };
         } catch (error) {
           if (axios.isAxiosError(error)) {
