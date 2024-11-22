@@ -26,7 +26,7 @@ public class AuthController : Controller
     /// </remarks>
     /// <response code="201">This endpoint validates a user.</response>
     /// <response code="401">User's username or password is incorrect.</response>
-    [ProducesResponseType(typeof(ShortUserDto), 201)]
+    [ProducesResponseType(typeof(UserDto), 201)]
     [ProducesResponseType(401)]
     [HttpPost(ApiEndpoints.Auth.LOGIN)]
     public IActionResult Login([FromBody] LoginBody loginBody)
@@ -38,8 +38,8 @@ public class AuthController : Controller
             return Unauthorized();
 
         // adapt to short user dto
-        var shortUserDto = user.Adapt<ShortUserDto>();
-        var response = new ApiResponse(shortUserDto);
+        var userDto = user.Adapt<UserDto>();
+        var response = new ApiResponse(userDto);
         
         return Ok(response);
     }
