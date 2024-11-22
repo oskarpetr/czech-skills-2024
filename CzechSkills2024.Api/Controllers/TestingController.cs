@@ -85,7 +85,7 @@ public class TestingController : Controller
         var newUserTesting = new UserTesting()
         {
             UserId = userId,
-            TestingId = testingBody.TestingId,
+            TestingId = testingBody.testingId,
         };
         
         // add new user testing & save

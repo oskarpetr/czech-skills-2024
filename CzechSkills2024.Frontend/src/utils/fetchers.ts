@@ -22,7 +22,7 @@ export async function postTesting(userId: string, testingId: string) {
   return fetcher({
     url: `testing/${userId}`,
     method: "POST",
-    body: { TestingId: testingId },
+    body: { testingId },
   });
 }
 
