@@ -39,8 +39,8 @@ public class TestingController : Controller
             return NotFound();
 
         // adapt to user dto
-        var testing = new { testing = user.UserTesting.Testing };
-        var response = new ApiResponse(testing);
+        var userDto = user.Adapt<UserDto>();
+        var response = new ApiResponse(userDto);
         
         return Ok(response);
     }
