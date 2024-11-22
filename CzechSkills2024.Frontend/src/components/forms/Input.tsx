@@ -1,7 +1,5 @@
 import { ChangeEvent, FocusEvent, Fragment } from "react";
 import FormError from "./FormError";
-import Icon from "../common/Icon";
-import { cn } from "@/utils/cn";
 
 interface Props {
   type?: "text" | "email" | "password";

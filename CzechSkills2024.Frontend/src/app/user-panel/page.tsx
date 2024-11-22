@@ -4,14 +4,11 @@ import FadeIn from "@/components/animation/FadeIn";
 import BetaTesting from "@/components/beta-testing/BetaTesting";
 import Button from "@/components/common/Button";
 import Heading from "@/components/common/Heading";
-import Section from "@/components/common/Section";
 import Layout from "@/components/layout/Layout";
 import { signOut, useSession } from "next-auth/react";
 import Error from "next/error";
-import { useRouter } from "next/navigation";
 
 export default function UserPanel() {
-  const router = useRouter();
   const { status } = useSession();
 
   if (status === "unauthenticated") {

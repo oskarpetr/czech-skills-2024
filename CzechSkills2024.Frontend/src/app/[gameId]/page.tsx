@@ -53,7 +53,7 @@ export default function Game() {
           </FadeIn>
 
           <div className="flex gap-2">
-            {game.tags.map((tag, index) => (
+            {game.tags.map((tag) => (
               <FadeIn
                 key={tag.name}
                 className="px-6 py-2 text-white border border-white rounded-full"

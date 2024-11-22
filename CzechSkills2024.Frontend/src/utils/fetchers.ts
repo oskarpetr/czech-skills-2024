@@ -63,7 +63,7 @@ async function fetcher({
     }
 
     return res.data;
-  } catch (error: any) {
+  } catch (error) {
     const message = "An error occurred. Please try again.";
 
     if (showToast) {
