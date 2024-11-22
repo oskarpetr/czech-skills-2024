@@ -1,9 +1,10 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-// import bcrypt from "bcryptjs-react";
-import { NextAuthOptions } from "next-auth";
+import bcrypt from "bcryptjs";
+import { Account, NextAuthOptions } from "next-auth";
 import axios from "axios";
 import { postLogin } from "./fetchers";
+import { SessionUser } from "@/types/NextAuth.types";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -18,18 +19,14 @@ export const authOptions: NextAuthOptions = {
           if (!credentials || !credentials.username || !credentials.password)
             return null;
 
+          const passwordHash = await bcrypt.hash(credentials.password, 10);
+
           const res = await postLogin({
             username: credentials.username,
-            password: credentials.password,
+            password: passwordHash,
           });
 
           const user = res.data;
-
-          // const passwordMatch = bcrypt.compareSync(
-          //   credentials.password,
-          //   user.password
-          // );
-          // await bcrypt.hashSync(password, bcrypt.genSaltSync(10));
 
           return {
             id: user.userId,
@@ -52,38 +49,23 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
   },
-  // callbacks: {
-  //   jwt({
-  //     token,
-  //     user,
-  //     account,
-  //   }: {
-  //     token: any;
-  //     user: any;
-  //     account: Account | null;
-  //   }) {
-  //     const userSession = user as SessionUser;
+  callbacks: {
+    jwt({ token, user }: { token: any; user: any }) {
+      const userSession = user as SessionUser;
 
-  //     if (user) {
-  //       token.memberId = userSession.memberId;
-  //       token.username = userSession.username;
-  //       token.fullName = userSession.fullName;
-  //     }
+      if (user) {
+        token.userId = userSession.userId;
+        token.username = userSession.username;
+      }
 
-  //     if (account && account.access_token) {
-  //       token.accessToken = account.access_token; // Save access_token in token object
-  //     }
-
-  //     return token;
-  //   },
-  //   session({ session, token }: { session: any; token: any }) {
-  //     session.user.memberId = token?.memberId;
-  //     session.user.username = token?.username;
-  //     session.user.fullName = token?.fullName;
-  //     session.user.accessToken = token?.accessToken;
-  //     return session;
-  //   },
-  // },
+      return token;
+    },
+    session({ session, token }: { session: any; token: any }) {
+      session.user.userId = token?.userId;
+      session.user.username = token?.username;
+      return session;
+    },
+  },
 };
 
 export default NextAuth(authOptions);

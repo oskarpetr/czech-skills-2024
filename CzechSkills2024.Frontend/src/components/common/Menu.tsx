@@ -17,12 +17,12 @@ export default function Menu() {
 function MenuItems() {
   const menuItems: IMenuItem[] = [
     {
-      text: "About",
-      link: "#about",
-    },
-    {
       text: "Games",
       link: "#games",
+    },
+    {
+      text: "About",
+      link: "#about",
     },
   ];
 

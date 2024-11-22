@@ -1,6 +1,7 @@
 "use client";
 
 import FadeIn from "@/components/animation/FadeIn";
+import BetaTesting from "@/components/beta-testing/BetaTesting";
 import Button from "@/components/common/Button";
 import Heading from "@/components/common/Heading";
 import Section from "@/components/common/Section";
@@ -17,11 +18,6 @@ export default function UserPanel() {
     return <Error statusCode={401} />;
   }
 
-  const signOutFn = () => {
-    signOut();
-    router.push("/");
-  };
-
   return (
     <Layout>
       <div className="bg-black px-24 py-20 bg-opacity-85 h-[calc(100vh-6rem)] flex flex-col gap-12">
@@ -31,12 +27,15 @@ export default function UserPanel() {
           subtitle="You have successfully logged in."
         />
 
-        <Section title="Beta testing" color="white" />
+        <FadeIn delay={0.2}>
+          <Section title="Beta testing" color="white" />
+        </FadeIn>
+        <BetaTesting />
 
-        <FadeIn delay={0.1}>
+        <FadeIn delay={0.3}>
           <Button
             text="Log out"
-            onClick={signOutFn}
+            onClick={() => signOut({ callbackUrl: "/" })}
             fullWidth={false}
             size="small"
           />

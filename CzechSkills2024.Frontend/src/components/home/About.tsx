@@ -2,9 +2,12 @@ import { IMenuItem } from "@/types/MenuItem.types";
 import Icon from "../common/Icon";
 import Link from "next/link";
 
-export default function Studio() {
+export default function About() {
   return (
-    <div className="bg-black -mt-20 px-24 py-40 flex items-center gap-16 h-screen">
+    <div
+      id="about"
+      className="bg-black -mt-20 px-24 py-40 flex items-center gap-16 h-screen"
+    >
       <iframe
         src="https://www.youtube.com/embed/sBgNFl3jYPs?autoplay=1&mute=1"
         // style={{

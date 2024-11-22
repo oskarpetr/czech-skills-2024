@@ -36,10 +36,6 @@ public class AuthController : Controller
         
         if (user == null)
             return Unauthorized();
-        
-        // check if password is correct
-        if(user.Password != loginBody.password)
-            return Unauthorized();
 
         // adapt to short user dto
         var shortUserDto = user.Adapt<ShortUserDto>();

@@ -1,5 +1,5 @@
 import Games from "@/components/home/Games";
-import Studio from "@/components/home/Studio";
+import About from "@/components/home/About";
 import Layout from "@/components/layout/Layout";
 import Head from "next/head";
 
@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
 
       <Games />
-      <Studio />
+      <About />
     </Layout>
   );
 }

@@ -12,7 +12,7 @@ export default function Games() {
   const activeGame = games.find((x) => x.id === activeGameId)!;
 
   return (
-    <div className="relative h-[calc(100vh-6rem)] w-screen">
+    <div id="games" className="relative h-[calc(100vh-6rem)] w-screen">
       <Image
         alt={activeGame.name}
         src={activeGame.imageUrl}
