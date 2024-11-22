@@ -33,7 +33,7 @@ export default function BetaTesting() {
     enabled: !!session,
   });
 
-  const userTesting = (testingQuery.data?.data.testing as ITesting) ?? null;
+  //   const userTesting = (testingQuery.data?.data.testing as ITesting) ?? null;
   console.log(testingQuery.data);
   // fetch all testings
   const testingsQuery = useQuery({
