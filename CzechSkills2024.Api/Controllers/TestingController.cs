@@ -71,7 +71,7 @@ public class TestingController : Controller
             return NotFound();
         
         // check if user testing exists
-        var userTesting = _database.UserTestings.FirstOrDefault(x => x.UserId == userId && x.TestingId == testingBody.TestingId);
+        var userTesting = _database.UserTestings.FirstOrDefault(x => x.UserId == userId && x.TestingId == testingBody.testingId);
 
         // if user testing exists, remove it
         if (userTesting != null)
