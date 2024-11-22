@@ -38,10 +38,10 @@ public class TestingController : Controller
             .Include(x => x.UserTesting)
                 .ThenInclude(x => x.Testing)
             .FirstOrDefault(x => x.UserId == userId);
-        
+
         if (user == null)
             return NotFound();
-
+        return Ok(user);
         // adapt to user dto
         var userDto = user.Adapt<UserDto>();
         var response = new ApiResponse(userDto);
