@@ -16,6 +16,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "gematsu.com",
       },
+      {
+        protocol: "https",
+        hostname: "",
+      },
     ],
   },
 };
