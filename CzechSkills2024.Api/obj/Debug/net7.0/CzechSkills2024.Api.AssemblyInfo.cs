@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CzechSkills2024.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06e2e04402da277bd801080b811456a9d9e7c32c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1342ffcb99c09c270c7b341841ce2698826f830")]
 [assembly: System.Reflection.AssemblyProductAttribute("CzechSkills2024.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CzechSkills2024.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -31,7 +31,14 @@ export default function Heading({
 
       {subtitle && (
         <FadeIn delay={delay} animate={animate}>
-          <h2 className="max-w-[35rem]">{subtitle}</h2>
+          <h2
+            className={cn(
+              "max-w-[35rem] opacity-50",
+              color === "black" ? "text-black-primary" : "text-white"
+            )}
+          >
+            {subtitle}
+          </h2>
         </FadeIn>
       )}
     </div>

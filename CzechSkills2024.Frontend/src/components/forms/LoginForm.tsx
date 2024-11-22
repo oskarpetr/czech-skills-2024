@@ -4,18 +4,15 @@ import { Formik } from "formik";
 import Button from "../common/Button";
 import { object, string } from "yup";
 import Input from "./Input";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { toastSuccess } from "../common/Toast";
 import Section from "../common/Section";
 
 export default function LoginForm() {
   // router
   const router = useRouter();
-
-  // session
-  const { status } = useSession();
 
   // error response
   const [formError, setFormError] = useState<string | undefined>();
@@ -37,6 +34,7 @@ export default function LoginForm() {
 
   // on submit handler
   const onSubmit = async (values: any) => {
+    console.log(values);
     if (!values.username || !values.password) {
       return;
     }
@@ -46,7 +44,7 @@ export default function LoginForm() {
     const signInRes = await signIn("credentials", {
       username: values.username,
       password: values.password,
-      callbackUrl: "/",
+      callbackUrl: "/user-panel",
       redirect: false,
     });
 
@@ -56,13 +54,9 @@ export default function LoginForm() {
       router.push(signInRes.url!);
       toastSuccess("You have been signed in.");
     } else if (signInRes?.error) {
-      setFormError("Invalid username or password");
+      setFormError("Invalid username or password.");
     }
   };
-
-  useEffect(() => {
-    console.log(status);
-  }, [status]);
 
   return (
     <Formik
@@ -81,7 +75,7 @@ export default function LoginForm() {
         <form onSubmit={handleSubmit} className="w-full">
           <div className="flex flex-col gap-8">
             <div>
-              <Section title="Username" />
+              <Section title="Username" color="white" />
               <Input
                 name="username"
                 onChange={handleChange}
@@ -93,7 +87,7 @@ export default function LoginForm() {
               />
             </div>
             <div>
-              <Section title="Password" />
+              <Section title="Password" color="white" />
               <Input
                 name="password"
                 type="password"
@@ -106,12 +100,12 @@ export default function LoginForm() {
               />
             </div>
 
-            {/* <FormError error={formError} touched /> */}
             <Button
               icon="ArrowRight"
               text="Login"
               iconDirection="right"
               loading={loading}
+              type="primary"
             />
           </div>
         </form>

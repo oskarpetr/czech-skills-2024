@@ -12,7 +12,6 @@ interface Props {
   value: string;
   error: string | undefined;
   touched: boolean | undefined;
-  icon?: string;
 }
 
 export default function Input({
@@ -24,27 +23,15 @@ export default function Input({
   value = "",
   error,
   touched,
-  icon,
 }: Props) {
   return (
     <Fragment>
       <div className="relative flex items-center">
-        {icon && (
-          <Icon
-            name="MagnifyingGlass"
-            className="absolute ml-6 opacity-30"
-            size={20}
-            weight="bold"
-          />
-        )}
         <input
           key={name}
           type={type}
           name={name}
-          className={cn(
-            "focus:ring-4 ring-opacity-5 ring-neutral-600 transition-all outline-none w-full px-6 py-3 bg-black-primary bg-opacity-5 rounded-lg border border-black-primary border-opacity-10",
-            icon ? "pl-[3.25rem]" : "pl-6"
-          )}
+          className="focus:ring-4 ring-opacity-5 ring-neutral-600 transition-all outline-none w-full px-6 py-3 bg-white bg-opacity-5 rounded-lg border border-white border-opacity-20 text-white"
           placeholder={placeholder}
           onChange={onChange}
           onBlur={onBlur}

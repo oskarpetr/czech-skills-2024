@@ -45,7 +45,7 @@ function MenuItems() {
       <Link href="/login">
         <Button
           text="Beta testing"
-          type="white"
+          type="primary"
           fullWidth={false}
           size="small"
         />

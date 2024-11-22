@@ -2,6 +2,7 @@
 using CzechSkills2024.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CzechSkills2024.Database.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241122133619_Two")]
+    partial class Two
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,7 +39,7 @@ namespace CzechSkills2024.Database.Migrations
 
                     b.HasKey("TestingId");
 
-                    b.ToTable("Testings");
+                    b.ToTable("Testing");
                 });
 
             modelBuilder.Entity("CzechSkills2024.Database.Tables.User", b =>
@@ -48,7 +51,7 @@ namespace CzechSkills2024.Database.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("UserTestingId")
+                    b.Property<string>("TestingId")
                         .HasColumnType("text");
 
                     b.Property<string>("Username")
@@ -57,58 +60,18 @@ namespace CzechSkills2024.Database.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("CzechSkills2024.Database.Tables.UserTesting", b =>
-                {
-                    b.Property<string>("UserTestingId")
-                        .HasColumnType("text");
-
-                    b.Property<string>("GameKey")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("TestingId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("UserTestingId");
-
                     b.HasIndex("TestingId");
 
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("UserTestings");
-                });
-
-            modelBuilder.Entity("CzechSkills2024.Database.Tables.UserTesting", b =>
-                {
-                    b.HasOne("CzechSkills2024.Database.Tables.Testing", "Testing")
-                        .WithMany()
-                        .HasForeignKey("TestingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CzechSkills2024.Database.Tables.User", "User")
-                        .WithOne("UserTesting")
-                        .HasForeignKey("CzechSkills2024.Database.Tables.UserTesting", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Testing");
-
-                    b.Navigation("User");
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("CzechSkills2024.Database.Tables.User", b =>
                 {
-                    b.Navigation("UserTesting");
+                    b.HasOne("CzechSkills2024.Database.Tables.Testing", "Testing")
+                        .WithMany()
+                        .HasForeignKey("TestingId");
+
+                    b.Navigation("Testing");
                 });
 #pragma warning restore 612, 618
         }

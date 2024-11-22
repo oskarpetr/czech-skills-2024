@@ -32,11 +32,11 @@ export default function Button({
       className={cn(
         "disabled:opacity-80 focus:ring-4 ring-0 ring-opacity-30 flex items-center gap-2 rounded-lg text-white transition-all",
         type === "primary"
-          ? "bg-green-primary hover:bg-green-primary-hover ring-green-primary *:font-bold"
+          ? "bg-white hover:bg-neutral-200 text-black-primary ring-white"
           : type === "cancel"
           ? "bg-neutral-600 hover:bg-neutral-700 ring-neutral-600 *:font-bold"
           : type === "white"
-          ? "bg-white hover:bg-neutral-200 text-black-primary ring-white"
+          ? "bg-green-primary hover:bg-green-primary-hover ring-green-primary *:font-bold"
           : type === "black"
           ? "bg-black-primary hover:bg-neutral-900 text-white ring-neutral-900"
           : "",
