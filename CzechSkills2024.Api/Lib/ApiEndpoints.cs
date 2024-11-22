@@ -9,4 +9,9 @@ public static class ApiEndpoints
     {
         public const string GET_USERS = "users";
     }
+    
+    public static class Auth
+    {
+        public const string LOGIN = "auth/login";
+    }
 }

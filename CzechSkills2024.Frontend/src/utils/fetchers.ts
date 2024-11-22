@@ -1,13 +1,14 @@
 import { toastError, toastSuccess } from "@/components/common/Toast";
+import { IAuthLogin } from "@/types/Auth.types";
 import axios, { AxiosRequestConfig, Method } from "axios";
 
-// studios
-export async function fetchStudios() {
-  return fetcher({ url: "studios", authorize: true });
+// login
+export async function postLogin(loginBody: IAuthLogin) {
+  return fetcher({ url: "auth/login", method: "POST", body: loginBody });
 }
 
 // fetcher
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+const API_URL = "https://cs24-api.onrender.com/api/v1/";
 
 async function fetcher({
   url,
@@ -44,15 +45,12 @@ async function fetcher({
 
     return res.data;
   } catch (error: any) {
-    const statusCode = error.response?.status;
-    const statusText = error.response?.statusText || error.message;
-    const customError = new Error(statusText);
-    customError.name = statusCode.toString();
+    const error = "An error occurred. Please try again.";
 
     if (showToast) {
-      toastError("An error occurred. Please try again.");
+      toastError(error);
     }
 
-    throw customError;
+    throw error;
   }
 }

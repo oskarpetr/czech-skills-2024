@@ -1,0 +1,47 @@
+using CzechSkills2024.Database;
+using Mapster;
+using Microsoft.AspNetCore.Mvc;
+using Speckles.Api.BodyModels;
+using Speckles.Api.Dto;
+using Speckles.Api.Lib;
+
+namespace CzechSkills2024.Api.Controllers;
+
+[ApiController]
+[Route(ApiEndpoints.API_BASE)]
+public class AuthController : Controller
+{
+    private readonly ApplicationDbContext _database;
+    
+    public AuthController(ApplicationDbContext database)
+    {
+        _database = database;
+    }
+
+    /// <summary>
+    /// Validates user.
+    /// </summary>
+    /// <remarks>
+    /// This endpoint validates a user.
+    /// </remarks>
+    /// <response code="201">This endpoint validates a user.</response>
+    /// <response code="401">User's username or password is incorrect.</response>
+    [ProducesResponseType(typeof(UserDto), 201)]
+    [ProducesResponseType(401)]
+    [HttpPost(ApiEndpoints.Auth.LOGIN)]
+    public IActionResult Login([FromBody] LoginBody loginBody)
+    {
+        var member = _database.Users.FirstOrDefault(x => x.Username == loginBody.username);
+        
+        if (member == null)
+            return Unauthorized();
+        
+        if(member.Password != loginBody.password)
+            return Unauthorized();
+
+        var shortMemberDto = member.Adapt<UserDto>();
+        var response = new ApiResponse(shortMemberDto);
+        
+        return Ok(response);
+    }
+}

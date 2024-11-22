@@ -15,7 +15,7 @@ export const games: IGame[] = [
         link: "https://www.playstation.com/cs-cz/games/stray/",
       },
     ],
-    publishDate: new Date(2020, 4, 4),
+    publishDate: new Date(2025, 4, 4),
   },
   {
     id: "2",
@@ -32,7 +32,7 @@ export const games: IGame[] = [
         link: "https://store.playstation.com/en-us/concept/10012810",
       },
     ],
-    publishDate: new Date(2022, 2, 9),
+    publishDate: new Date(2025, 2, 9),
   },
   {
     id: "3",
@@ -48,6 +48,6 @@ export const games: IGame[] = [
         link: "https://store.steampowered.com/app/1497430/Bounty_Star/",
       },
     ],
-    publishDate: new Date(2022, 2, 9),
+    publishDate: new Date(2025, 2, 9),
   },
 ];

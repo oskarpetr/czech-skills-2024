@@ -3,6 +3,7 @@
 import FadeIn from "@/components/animation/FadeIn";
 import Layout from "@/components/layout/Layout";
 import { games } from "@/utils/sampleData";
+import { intervalToDuration } from "date-fns";
 import Error from "next/error";
 import Head from "next/head";
 import Image from "next/image";
@@ -16,6 +17,11 @@ export default function Game() {
   if (game == null) {
     return <Error statusCode={404} />;
   }
+
+  const untilReleaseDate = intervalToDuration({
+    start: new Date(),
+    end: game.publishDate,
+  });
 
   return (
     <Layout>
@@ -48,11 +54,20 @@ export default function Game() {
               <FadeIn
                 key={tag.name}
                 className="px-6 py-2 text-white border border-white rounded-full"
-                delay={0.05 * index + 0.1}
+                delay={0.15}
               >
                 {tag.name}
               </FadeIn>
             ))}
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <div className="text-white opacity-50">Until release</div>
+            <div className="text-white text-xl">
+              {untilReleaseDate.years ?? 0} roků, {untilReleaseDate.months ?? 0}{" "}
+              měsíců, {untilReleaseDate.days ?? 0} dní,{" "}
+              {untilReleaseDate.hours ?? 0} hodin
+            </div>
           </div>
         </div>
       </div>

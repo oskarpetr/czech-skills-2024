@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "ReSbxHA4YcdRCoEZ1VZZpGyA6KXtSujlZKE0m7M5kSlHgw2xdxRvtvuunOMexAaMEilo+JCmmUFyVMOsIyDk2g==",
+  "dgSpecHash": "TbuhjQZklbJTiXVpnwIJAYTsdltIiqeJcu4NeRgF2SMOFXLGozLiRxugW1XcWzzljadFFHXqk63CoSrT3nY7Aw==",
   "success": true,
   "projectFilePath": "/Users/oskarpetr/Developer/React/CzechSkills2024/CzechSkills2024.Api/CzechSkills2024.Api.csproj",
   "expectedPackageFiles": [
     "/Users/oskarpetr/.nuget/packages/dotnetenv/3.1.1/dotnetenv.3.1.1.nupkg.sha512",
+    "/Users/oskarpetr/.nuget/packages/mapster/7.4.1-pre01/mapster.7.4.1-pre01.nupkg.sha512",
+    "/Users/oskarpetr/.nuget/packages/mapster.core/1.2.2-pre01/mapster.core.1.2.2-pre01.nupkg.sha512",
     "/Users/oskarpetr/.nuget/packages/microsoft.aspnetcore.openapi/7.0.5/microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "/Users/oskarpetr/.nuget/packages/microsoft.entityframeworkcore/7.0.11/microsoft.entityframeworkcore.7.0.11.nupkg.sha512",
     "/Users/oskarpetr/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.11/microsoft.entityframeworkcore.abstractions.7.0.11.nupkg.sha512",
