@@ -34,7 +34,10 @@ public class TestingController : Controller
     public IActionResult GetTestingByUser([FromRoute] string userId)
     {
         // check if user exists
-        var user = _database.Users.Include(x => x.UserTesting).FirstOrDefault(x => x.UserId == userId);
+        var user = _database.Users
+            .Include(x => x.UserTesting)
+                .ThenInclude(x => x.Testing)
+            .FirstOrDefault(x => x.UserId == userId);
         
         if (user == null)
             return NotFound();

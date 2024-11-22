@@ -6,5 +6,5 @@ public class UserDto
 {
     public string UserId { get; set; }
     public string Username { get; set; }
-    public Testing? Testing { get; set; }
+    public UserTesting? Testing { get; set; }
 }
