@@ -63,11 +63,12 @@ async function fetcher({
     }
 
     return res.data;
-  } catch (error) {
+  } catch (error: any) {
     const message = "An error occurred. Please try again.";
 
     if (showToast) {
       toastError(message);
+      console.log(error);
     }
 
     throw message;
